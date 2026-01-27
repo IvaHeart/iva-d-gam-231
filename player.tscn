@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bi7hn0tql5oqf"]
+[gd_scene load_steps=20 format=3 uid="uid://bi7hn0tql5oqf"]
 
 [ext_resource type="Texture2D" uid="uid://dlunjlkecwb61" path="res://characters/DinoSprites - doux.png" id="1_4flbx"]
-[ext_resource type="FontFile" uid="uid://bokvol44dmy3d" path="res://fonts/PixelOperator8.ttf" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://djj3vas51tl6n" path="res://scripts/player.gd" id="1_onrkg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
 radius = 6.0
@@ -130,10 +130,9 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_i3pqv"]
-font = ExtResource("2_onrkg")
-
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_onrkg")
@@ -142,20 +141,3 @@ shape = SubResource("CapsuleShape2D_onrkg")
 sprite_frames = SubResource("SpriteFrames_q13i1")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.8720329
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(10, 10)
-
-[node name="ProjectLabel" type="Label" parent="."]
-anchors_preset = -1
-anchor_left = 0.266
-anchor_top = -0.21000001
-anchor_right = 0.266
-anchor_bottom = -0.20400001
-offset_left = -56.0
-offset_top = -32.0
-offset_right = 56.0
-offset_bottom = -16.0
-text = "Iva Davis"
-label_settings = SubResource("LabelSettings_i3pqv")
