@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="IvaD_GAM231"
-run/main_scene="uid://d075k7p16i6a6"
+run/main_scene="uid://dpa377cbqthdq"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

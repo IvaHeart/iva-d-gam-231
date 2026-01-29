@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://baq7up2d1w367"]
+
+[ext_resource type="Script" uid="uid://c1wmxnfpm03wo" path="res://scenes/enemy_simple_move.gd" id="1_0pvn7"]
+[ext_resource type="Texture2D" uid="uid://chfub3tbpqp3l" path="res://enemies/Green Slime Spritesheet.png" id="1_bln8p"]
+[ext_resource type="PackedScene" uid="uid://b6kj0k2frxq8s" path="res://scenes/killzone.tscn" id="2_tuic5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuic5"]
+atlas = ExtResource("1_bln8p")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pvn7"]
+atlas = ExtResource("1_bln8p")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q1e0"]
+atlas = ExtResource("1_bln8p")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boo2g"]
+atlas = ExtResource("1_bln8p")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq38r"]
+atlas = ExtResource("1_bln8p")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io87k"]
+atlas = ExtResource("1_bln8p")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q1p6"]
+atlas = ExtResource("1_bln8p")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vl2pm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuic5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pvn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q1e0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boo2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq38r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io87k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q1p6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pvn7"]
+size = Vector2(14, 7)
+
+[node name="GreenSlime" type="Area2D"]
+script = ExtResource("1_0pvn7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vl2pm")
+autoplay = "default"
+frame_progress = 0.40800387
+
+[node name="Killzone" parent="." instance=ExtResource("2_tuic5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_0pvn7")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(14, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-14, 0)
