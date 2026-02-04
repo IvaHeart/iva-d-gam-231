@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwiacxk70p336"]
+[gd_scene load_steps=20 format=3 uid="uid://cwiacxk70p336"]
 
 [ext_resource type="Script" uid="uid://c5gdmtngte1qn" path="res://scripts/coins.gd" id="1_i64fm"]
 [ext_resource type="Texture2D" uid="uid://bh4vx7hh54s8q" path="res://items/coin.png" id="1_il3xk"]
+[ext_resource type="AudioStream" uid="uid://dsjpp8khwfhhl" path="res://sounds/sfx_gem.ogg" id="3_11l1o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_36kmy"]
 radius = 7.0
@@ -98,6 +99,64 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Animation" id="Animation_11l1o"]
+resource_name = "pickup"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.43333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d14el"]
+_data = {
+&"pickup": SubResource("Animation_11l1o")
+}
+
 [node name="Coin" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_i64fm")
@@ -109,5 +168,15 @@ shape = SubResource("CircleShape2D_36kmy")
 sprite_frames = SubResource("SpriteFrames_qqvf8")
 autoplay = "default"
 frame_progress = 0.94511396
+
+[node name="CoinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_11l1o")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CoinSound")
+libraries = {
+&"": SubResource("AnimationLibrary_d14el")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
