@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://ddpeil1m40w3t" path="res://tilesets/tileset.png" id="1_4lj41"]
 [ext_resource type="Script" uid="uid://1ngmbnvjq1m2" path="res://scripts/game_manager.gd" id="1_llcge"]
-[ext_resource type="Script" uid="uid://c5gdmtngte1qn" path="res://scripts/coins.gd" id="1_nr3cb"]
 [ext_resource type="PackedScene" uid="uid://bi7hn0tql5oqf" path="res://player.tscn" id="2_mofoo"]
 [ext_resource type="PackedScene" uid="uid://cwiacxk70p336" path="res://scenes/coin.tscn" id="2_nr3cb"]
 [ext_resource type="Texture2D" uid="uid://11uvlqonb3xa" path="res://tilesets/props.png" id="3_t0ybu"]
@@ -10,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://baq7up2d1w367" path="res://scenes/green_slime.tscn" id="6_qgxqk"]
 [ext_resource type="Texture2D" uid="uid://qf1eqci68ml" path="res://tilesets/back.png" id="8_1b6n0"]
 [ext_resource type="PackedScene" uid="uid://bk6g6ywpn030d" path="res://scenes/purple_slime.tscn" id="10_lwi15"]
+[ext_resource type="PackedScene" uid="uid://dfdvh1adbo2n7" path="res://scenes/UI/coin_ui.tscn" id="11_e6mo4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_llcge"]
 texture = ExtResource("8_1b6n0")
@@ -679,7 +679,6 @@ unique_name_in_owner = true
 script = ExtResource("1_llcge")
 
 [node name="Coins" type="Node" parent="."]
-script = ExtResource("1_nr3cb")
 
 [node name="Coin" parent="Coins" instance=ExtResource("2_nr3cb")]
 position = Vector2(104, 48)
@@ -874,6 +873,12 @@ limit_top = -9999958
 limit_right = 10000011
 limit_bottom = 300
 position_smoothing_enabled = true
+
+[node name="CoinUI" parent="Player/Camera2D2" instance=ExtResource("11_e6mo4")]
+offset_left = -184.0
+offset_top = -96.0
+offset_right = -45.0
+offset_bottom = -56.0
 
 [node name="Node" type="Node" parent="."]
 

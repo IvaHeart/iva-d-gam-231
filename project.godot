@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="IvaD_GAM231"
-run/main_scene="uid://dpa377cbqthdq"
+run/main_scene="uid://bqxx5d5ddvb0g"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Music="*res://scenes/music.tscn"
 
 [debug]
 
