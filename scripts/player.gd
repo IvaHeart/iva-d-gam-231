@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+func _ready() -> void:
+	# Add this node to the "player" group for collision detection
+	add_to_group("player")
+
 
 const SPEED : float = 150.0
 const JUMP_VELOCITY : float = -250.0

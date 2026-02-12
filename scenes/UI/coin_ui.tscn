@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfdvh1adbo2n7"]
 
-[ext_resource type="Script" uid="uid://7n5ms7todhaj" path="res://scenes/UI/coin_ui.gd" id="1_55f6b"]
 [ext_resource type="FontFile" uid="uid://4xg512ccwhle" path="res://fonts/PixelOperator8-Bold.ttf" id="1_e7x4s"]
+
+[sub_resource type="GDScript" id="GDScript_pl4dn"]
 
 [node name="CoinUI" type="CenterContainer"]
 offset_right = 49.0
 offset_bottom = 14.0
-script = ExtResource("1_55f6b")
+script = SubResource("GDScript_pl4dn")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://cagl7hi32j7nh"]
+
+[ext_resource type="FontFile" uid="uid://4xg512ccwhle" path="res://fonts/PixelOperator8-Bold.ttf" id="1_o1ld7"]
+[ext_resource type="FontFile" uid="uid://bokvol44dmy3d" path="res://fonts/PixelOperator8.ttf" id="2_2ayvv"]
+[ext_resource type="Script" uid="uid://brjue2wws32c7" path="res://play.gd" id="2_o1ld7"]
+[ext_resource type="Texture2D" uid="uid://jkd35wds44bx" path="res://characters/pixel_dino.png" id="3_w1mvj"]
+
+[sub_resource type="Gradient" id="Gradient_lxycn"]
+offsets = PackedFloat32Array(0.013333334, 0.5, 1)
+colors = PackedColorArray(0.5058824, 0.77254903, 0.84705883, 1, 0.99215686, 0.8117647, 0.92941177, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vqw7c"]
+gradient = SubResource("Gradient_lxycn")
+
+[sub_resource type="LabelSettings" id="LabelSettings_86xni"]
+font = ExtResource("1_o1ld7")
+font_size = 80
+outline_size = 10
+outline_color = Color(0, 0, 0.003921569, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("GradientTexture2D_vqw7c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 288.0
+offset_top = 104.0
+offset_right = 868.0
+offset_bottom = 184.0
+text = "Dino Run"
+label_settings = SubResource("LabelSettings_86xni")
+
+[node name="Play" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.377
+anchor_top = 0.407
+anchor_right = 0.623
+anchor_bottom = 0.485
+offset_left = -0.3040161
+offset_top = -2.7359924
+offset_right = 0.30395508
+offset_bottom = -0.27999878
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_2ayvv")
+theme_override_font_sizes/font_size = 48
+text = "Play"
+script = ExtResource("2_o1ld7")
+
+[node name="Quit" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.38200003
+anchor_top = 0.41500002
+anchor_right = 0.61800003
+anchor_bottom = 0.48100004
+offset_left = 31.935974
+offset_top = 91.07999
+offset_right = -26.936035
+offset_bottom = 91.31198
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_2ayvv")
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[node name="PixelDino" type="Sprite2D" parent="."]
+position = Vector2(1032, 503)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_w1mvj")
+
+[connection signal="pressed" from="CanvasLayer/Play" to="CanvasLayer/Play" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Quit" to="CanvasLayer/Play" method="_on_quit_pressed"]
