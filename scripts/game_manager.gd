@@ -1,5 +1,5 @@
 extends Node
-class_name GameManager
+signal score_changed(new_score: int)
 
 # Track the player's score
 var score: int = 0
