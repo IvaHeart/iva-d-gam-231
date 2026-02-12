@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 const SPEED : float = 30.0
 var direction : int = -1
